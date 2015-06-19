@@ -1,0 +1,1 @@
+# loewy-assets
