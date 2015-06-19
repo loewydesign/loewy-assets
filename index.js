@@ -34,7 +34,7 @@ function relPath(base, filePath)
 }
 
 module.exports = (function() {
-	function assets(configCb, g)
+	function assets(prepare, g)
 	{
 		if (typeof g !== 'undefined')
 		{
@@ -51,9 +51,9 @@ module.exports = (function() {
 			gulp = g;
 		}
 
-		if (typeof configCb === 'function')
+		if (typeof prepare === 'function')
 		{
-			configCb.call(assets);
+			prepare.call(assets);
 		}
 
 		var tasks = assets.tasks;
@@ -486,6 +486,9 @@ module.exports = (function() {
 			{
 				var watch = watches[i];
 
+				/**
+				 * @todo Resolve error: [gulp] 'watch' errored after 7.78 ms Arguments to path.resolve must be strings
+				 */
 				gulp.watch(watch.watch, watch.task);
 			}
 		});
