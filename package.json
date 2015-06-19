@@ -1,0 +1,25 @@
+{
+  "name": "loewy-assets",
+  "version": "0.0.1",
+  "description": "A front-end asset pipeline driven by gulp.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loewydesign/loewy-assets.git"
+  },
+  "keywords": [
+    "front-end",
+    "asset",
+    "pipeline",
+    "gulp"
+  ],
+  "author": "Loewy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loewydesign/loewy-assets/issues"
+  },
+  "homepage": "https://github.com/loewydesign/loewy-assets"
+}
