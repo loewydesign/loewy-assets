@@ -14,10 +14,6 @@ var gulp = require('gulp'),
 	svgSprite = require('gulp-svg-sprite'),
 	uglify = require('gulp-uglify');
 
-gulp.task('default', function() {
-	console.log('default task defined in module');
-});
-
 function relPath(base, filePath)
 {
 	if (filePath.indexOf(base) !== 0)
@@ -38,12 +34,8 @@ function relPath(base, filePath)
 }
 
 module.exports = (function() {
-	function assets(configCb, g)
+	function assets(configCb)
 	{
-		console.log(gulp);
-		console.log(g);
-		console.log(gulp === g);
-
 		if (typeof configCb === 'function')
 		{
 			configCb.call(assets);
