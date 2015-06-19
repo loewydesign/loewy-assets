@@ -34,7 +34,11 @@ function relPath(base, filePath)
 }
 
 module.exports = (function() {
-	var assets = {};
+	var assets = {
+		config: {},
+		tasks: {},
+		watches: []
+	};
 
 	assets.config = {
 		tmp: 'resources/assets/tmp',
@@ -75,7 +79,7 @@ module.exports = (function() {
 
 			sheetPath: '../spritesheets/sprites.png',
 			partial: '_sprites.scss',
-			partialDir: 'resources/assets/scss/partials'
+			partialDir: 'resources/assets/scss/partials',
 
 			prefix: 'sprite_',
 			algorithm: 'binary-tree',
@@ -117,9 +121,6 @@ module.exports = (function() {
 			task.call(assets);
 		}
 	};
-
-	assets.tasks = {};
-	assets.watches = [];
 
 	assets.tasks.css = function() {
 		var config = this.config;
@@ -390,7 +391,7 @@ module.exports = (function() {
 				.pipe(gulpif('*.scss', gulp.dest(config.svgSprites.partialDir)));
 		});
 
-		this.watchers.push({
+		this.watches.push({
 			watch: [
 				config.svgSprites.src,
 				config.svgSprites.partialDir + '/' + config.svgSprites.partialTemplate
@@ -453,7 +454,7 @@ module.exports = (function() {
 		});
 	};
 
-	assets.task.cleanAll = function() {
+	assets.tasks.cleanAll = function() {
 		gulp.task('clean-all', [
 			'clean-css',
 			'clean-js',
@@ -465,14 +466,14 @@ module.exports = (function() {
 	};
 
 	assets.tasks.watch = function() {
-		var watchers = this.watchers;
+		var watches = this.watches;
 
 		gulp.task('watch', function () {
-			for (var i = 0; i < watchers.length; ++i)
+			for (var i = 0; i < watches.length; ++i)
 			{
-				var watcher = watchers[i];
+				var watch = watches[i];
 
-				gulp.watch(watcher.watch, watcher.task);
+				gulp.watch(watch.watch, watch.task);
 			}
 		});
 	};
