@@ -14,6 +14,10 @@ var gulp = require('gulp'),
 	svgSprite = require('gulp-svg-sprite'),
 	uglify = require('gulp-uglify');
 
+gulp.task('default', function() {
+	console.log('default task defined in module');
+});
+
 function relPath(base, filePath)
 {
 	if (filePath.indexOf(base) !== 0)
@@ -34,11 +38,31 @@ function relPath(base, filePath)
 }
 
 module.exports = (function() {
-	var assets = {
-		config: {},
-		tasks: {},
-		watches: []
-	};
+	function assets(configCb, g)
+	{
+		console.log(gulp);
+		console.log(g);
+		console.log(gulp === g);
+
+		if (typeof configCb === 'function')
+		{
+			configCb.call(assets);
+		}
+
+		var tasks = this.tasks;
+
+		for (var field in tasks)
+		{
+			if (!tasks.hasOwnProperty(field))
+			{
+				continue;
+			}
+
+			var task = tasks[field];
+
+			task.call(this);
+		}
+	}
 
 	assets.config = {
 		tmp: 'resources/assets/tmp',
@@ -101,26 +125,8 @@ module.exports = (function() {
 		}
 	};
 
-	assets.run = function(configCb) {
-		if (typeof configCb === 'function')
-		{
-			configCb.call(assets);
-		}
-
-		var tasks = assets.tasks;
-
-		for (var field in tasks)
-		{
-			if (!tasks.hasOwnProperty(field))
-			{
-				continue;
-			}
-
-			var task = tasks[field];
-
-			task.call(assets);
-		}
-	};
+	assets.tasks = {};
+	assets.watches = [];
 
 	assets.tasks.css = function() {
 		var config = this.config;
@@ -484,3 +490,5 @@ module.exports = (function() {
 
 	return assets;
 })();
+
+
