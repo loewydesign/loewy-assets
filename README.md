@@ -52,6 +52,10 @@ The `svg-sprites` task automatically generates a fingerprinted SVG spritesheet u
 
 ## Tasks
 
+- `gulp` or `gulp watch`
+
+	Watches all of the source files and runs the corresponding tasks when they change.
+
 - `gulp css`
 
 	Adds automatic prefixes to the source CSS files and moves them to the public directory (the source files themselves are not affected). No concatenation is performed, as that should be done by the CSS preprocessor.
