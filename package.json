@@ -1,6 +1,6 @@
 {
   "name": "loewy-assets",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A front-end asset pipeline driven by gulp.js.",
   "main": "index.js",
   "scripts": {
