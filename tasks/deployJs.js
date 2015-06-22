@@ -11,7 +11,7 @@ module.exports = function() {
 			// minify the deployed JS files
 			.pipe(uglify())
 
-			// fingerprinted the deployed JS files
+			// fingerprint the deployed JS files
 			.pipe(rev())
 
 			// move to output directory

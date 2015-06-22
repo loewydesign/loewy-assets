@@ -1,7 +1,8 @@
 var spritesmith = require('gulp.spritesmith'),
 	rev = require('gulp-rev'),
 	replace = require('gulp-replace'),
-	through = require('through2');
+	through = require('through2'),
+	path = require('path');
 
 function relPath(base, filePath)
 {

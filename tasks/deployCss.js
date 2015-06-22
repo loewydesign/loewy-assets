@@ -8,10 +8,10 @@ module.exports = function() {
 	gulp.task('deploy-css', function() {
 		return gulp.src(config.css.deploy)
 
-			// minified deployed CSS files
+			// minify the deployed CSS files
 			.pipe(minifyCss())
 
-			// fingerprinted deployed CSS files
+			// fingerprint the deployed CSS files
 			.pipe(rev())
 
 			// move to output directory
