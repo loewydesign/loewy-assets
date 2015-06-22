@@ -92,6 +92,8 @@ The `svg-sprites` task automatically generates a fingerprinted SVG spritesheet u
 
 	Automatically generates a fingerprinted SVG spritesheet.
 
+	Note that this task relies on a Sass partial template. A working example is provided [here](resources/assets/scss/partials/_svg-sprites-template.scss). While we continue to improve our documentation, please read up on `svg-sprite`'s templates [here](https://github.com/jkphl/svg-sprite/blob/c6f5748d20922037ea8c8da20fd205472f84b4dc/docs/configuration.md#user-content-rendering-configurations).
+
 - `gulp clean-[css/js/sprites/svg-sprites/all]`
 
 	Cleans corresponding public directory. These commands are automatically run where appropriate, but could be triggered manually to clean up.
@@ -103,6 +105,31 @@ The `svg-sprites` task automatically generates a fingerprinted SVG spritesheet u
 - `gulp deploy-js`
 
 	Fingerprints the JS files in the public directory and saves a `rev-manifest.json` file with mappings from the original filenames to the fingerprinted filenames.
+
+## Directory structure
+
+Loewy Assets assumes that you're running a directory structure like this:
+
+- Development assets, where `<assets>` corresponds to the assets directory that you provide:
+	- CSS: `<assets>/css`
+	- Sass: `<assets>/scss`
+	- JS: `<assets>/js`
+	- Images: `<assets>/images`
+	- Fonts: `<assets>/fonts`
+	- Sprites: `<assets>/sprites`
+		- Sass partials: `<assets>/scss/partials`
+	- SVG sprites: `<assets>/svg-sprites`
+		- Sass partials: `<assets>/scss/partials`
+		- Sass partial template: [`<assets>/scss/partials/_svg-sprites-template.scss`](resources/assets/scss/partials/_svg-sprites-template.scss)
+- Distribution assets, where `<public>` corresponds to the public directory that you provide (the place the web server will serve the files from):
+	- CSS: `<public>/css`
+	- JS: `<public>/js`
+	- Images: `<public>/images`
+	- Fonts: `<public>/fonts`
+	- Spritesheets: `<public>/spritesheets`
+	- SVG spritesheets: `<public>/svg-spritesheets`
+
+If one or more portions of your directory structure are different, you'll need to manually specify those options in the configuration object.
 
 ## FAQ
 
