@@ -1,0 +1,53 @@
+// generated from template svg-_sprites-template.scss on {{date}}
+
+$spriteSvgPath: '../svg-spritesheets/{{{sprite}}}' '../svg-spritesheets/{{{sprite}}}.png';
+$spriteSvgWidth: {{{spriteWidth}}};
+$spriteSvgHeight: {{{spriteHeight}}};
+
+@mixin sprite-svg($sprite, $centerX: false, $centerY: false, $scale: 1) {
+	$x: round(nth($sprite, 1) * $scale);
+	$y: round(nth($sprite, 2) * $scale);
+	$w: ceil(nth($sprite, 3) * $scale);
+	$h: ceil(nth($sprite, 4) * $scale);
+
+	$svgPath: nth($spriteSvgPath, 1);
+	$pngPath: nth($spriteSvgPath, 2);
+
+	width: $w * $scale * 1px;
+	height: $h * $scale * 1px;
+
+	background-position: ($x * 1px) ($y * 1px);
+	background-image: url(#{$svgPath});
+	background-size: ($spriteSvgWidth * $scale * 1px) ($spriteSvgHeight * $scale * 1px);
+
+	.no-svg & {
+		background-image: url(#{$pngPath});
+	}
+
+	@include sprite-svg-center($sprite, $centerX, $centerY, $scale);
+}
+
+@mixin sprite-svg-center($sprite, $centerX: false, $centerY: false, $scale: 1) {
+	$w: nth($sprite, 3) * $scale;
+	$h: nth($sprite, 4) * $scale;
+
+	@if $centerX {
+		position: absolute;
+		left: 50%;
+		margin-left: $w * -0.5px;
+	}
+
+	@if $centerY {
+		position: absolute;
+		top: 50%;
+		margin-top: $h * -0.5px;
+	}
+}
+
+{{#shapes}}
+$sprite_{{{name}}}: {{{position.absolute.x}}} {{{position.absolute.y}}} {{{width.outer}}} {{{height.outer}}};
+
+.sprite_{{{name}}} {
+	@include sprite-svg($sprite_{{{name}}});
+}
+{{/shapes}}
