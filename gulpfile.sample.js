@@ -7,7 +7,7 @@ assets(function(config) {
 
 	deepExtend(this.config, {
 		/**
-		 * See [config.js](config.js) for the full configuration object. You may override any of the configuration
+		 * See config.js for the full configuration object. You may override any of the configuration
 		 * options simply by placing them here. You may override one or more options without having
 		 * to override all of them.
 		 */
