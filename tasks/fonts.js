@@ -1,4 +1,4 @@
-assets.tasks.fonts = function() {
+module.exports = function() {
 	var config = this.config,
 		gulp = this.gulp;
 

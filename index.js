@@ -20,11 +20,11 @@ module.exports = function(assetsDir, publicDir, prepare, g) {
 		 * this resolves the issue with the duplicate gulp package. If npm link was not used, then the project's gulp instance
 		 * will match our gulp instance regardless, so this assignment will be harmless.
 		 */
-		this.gulp = g;
+		assets.gulp = g;
 	}
 	else
 	{
-		this.gulp = require('gulp');
+		assets.gulp = require('gulp');
 	}
 
 	if (typeof prepare === 'function')

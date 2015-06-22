@@ -2,7 +2,8 @@ var uglify = require('gulp-uglify'),
 	rev = require('gulp-rev');
 
 module.exports = function() {
-	var config = this.config;
+	var config = this.config,
+		gulp = this.gulp;
 
 	gulp.task('deploy-js', function() {
 		return gulp.src(config.js.deploy)

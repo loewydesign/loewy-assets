@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/loewydesign/loewy-assets",
   "devDependencies": {
-    "gulp": "^3.8.11"
+    "gulp": "^3.8.11",
+    "require-dir": "^0.3.0"
   },
   "dependencies": {
     "gulp-autoprefixer": "^2.3.0",

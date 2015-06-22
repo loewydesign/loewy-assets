@@ -23,7 +23,8 @@ function relPath(base, filePath)
 }
 
 module.exports = function() {
-	var config = this;
+	var config = this.config,
+		gulp = this.gulp;
 
 	gulp.task('sprites', ['clean-sprites'], function() {
 		var data = gulp.src(config.sprites.src)
