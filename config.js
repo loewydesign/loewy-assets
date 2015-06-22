@@ -21,6 +21,11 @@ module.exports = function(assetsDir, publicDir) {
 			}
 		},
 
+		sass: {
+			src: assetsDir + 'scss/**/*.scss',
+			dest: assetsDir + 'css'
+		},
+
 		js: {
 			modules: {
 				vendor: assetsDir + 'js/vendor/**/*.js',

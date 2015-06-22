@@ -23,8 +23,7 @@
   },
   "homepage": "https://github.com/loewydesign/loewy-assets",
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "require-dir": "^0.3.0"
+    "gulp": "^3.8.11"
   },
   "dependencies": {
     "gulp-autoprefixer": "^2.3.0",
@@ -35,9 +34,11 @@
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.3",
     "gulp-rev": "^4.0.0",
+    "gulp-sass": "^2.0.1",
     "gulp-svg-sprite": "^1.1.2",
     "gulp-uglify": "^1.2.0",
     "gulp.spritesmith": "^3.7.0",
+    "require-dir": "^0.3.0",
     "through2": "^0.6.5",
     "vinyl": "^0.4.6"
   }

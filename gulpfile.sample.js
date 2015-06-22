@@ -38,12 +38,15 @@ assets(assetsDir, publicDir, function() {
 	 * Advanced usage:
 	 *
 	 * this refers to the assets object from the loewy-assets module. This means that you have full access
-	 * to the list of tasks, list of watchers, and any other internals of the module. For example, you could
-	 * add your own task like this:
+	 * to the list of tasks, list of watchers, and any other internals of the module. Here are some examples:
 	 *
+	 * // create a new task
 	 * this.tasks.myTask = function() {
 	 *     gulp.task('my-task', function() { ... });
 	 * };
+	 *
+	 * // remove one of the default tasks (prevent it from initializing or running at all)
+	 * delete this.tasks.sass;
 	 *
 	 * See the index.js file for advanced usage details.
 	 */
