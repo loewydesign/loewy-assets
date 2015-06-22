@@ -53,12 +53,36 @@ The `svg-sprites` task automatically generates a fingerprinted SVG spritesheet u
 ## Tasks
 
 - `gulp css`
+
+	Adds automatic prefixes to the source CSS files and moves them to the public directory (the source files themselves are not affected). No concatenation is performed, as that should be done by the CSS preprocessor.
+
+	See the `css` portion of the configuration object in [config.js](config.js).
+
 - `gulp js`
+	
+	Concatenates JS assets into user-defined modules and places them in the public directory.
+
+	See the `js` portion of the configuration object in [config.js](config.js).
+
 - `gulp sprites`
+
+	Automatically generates a fingerprinted PNG spritesheet.
+
 - `gulp svg-sprites`
+
+	Automatically generates a fingerprinted SVG spritesheet.
+
 - `gulp clean-[css/js/sprites/svg-sprites/all]`
+
+	Cleans corresponding public directory. These commands are automatically run where appropriate, but could be triggered manually to clean up.
+
 - `gulp deploy-css`
+
+	Fingerprints the CSS files in the public directory and saves a `rev-manifest.json` file with mappings from the original filenames to the fingerprinted filenames.
+
 - `gulp deploy-js`
+
+	Fingerprints the JS files in the public directory and saves a `rev-manifest.json` file with mappings from the original filenames to the fingerprinted filenames.
 
 ## Credits
 
@@ -77,3 +101,7 @@ Loewy Assets wouldn't exist without all of the wonderful tools put out there by 
 - gulp.spritesmith
 - through2
 - vinyl
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
