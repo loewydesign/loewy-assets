@@ -171,7 +171,7 @@ Loewy Assets wouldn't exist without all of the wonderful tools put out there by 
 - gulp-clean
 - gulp-concat
 - gulp-if
-- gulp-minify-css MIT license
+- gulp-minify-css
 - gulp-rename
 - gulp-replace
 - gulp-rev
