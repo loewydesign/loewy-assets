@@ -5,12 +5,16 @@ module.exports = function() {
 	gulp.task('watch', function () {
 		for (var i = 0; i < watches.length; ++i)
 		{
-			var watch = watches[i];
+			var watch = watches[i],
+				task = watch.task;
 
-			/**
-			 * @todo Resolve error: [gulp] 'watch' errored after 7.78 ms Arguments to path.resolve must be strings
-			 */
-			gulp.watch(watch.watch, watch.task);
+			if (Object.prototype.toString.call(task) !== '[object Array]')
+			{
+				// gulp.watch task parameter must be an array, even if it's a single task
+				task = [task];
+			}
+
+			gulp.watch(watch.watch, task);
 		}
 	});
 };
