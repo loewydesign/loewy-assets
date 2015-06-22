@@ -6,19 +6,19 @@ A front-end asset pipeline driven by gulp.js.
 
 We've developed an in-house asset pipeline that we use for all of our projects, whether they be WordPress, Laravel, Magento, or anything else. Although powerful, this asset pipeline caters to our specific company needs - it's not meant to be a generic asset pipeline like, for example, Laravel's Elixir (although it could replace it).
 
-**Loewy Assets is currently a work in progress.** You're free to check it out, and even use it if you want, but we make no guarantees about the project's functionality or direction.
+**Loewy Assets is currently a work in progress.** You're free to check it out, and even use it if you want, but we make no guarantees about the project's functionality or direction of development.
 
 ## Usage
 
-1. Install `loewy-assets` via npm:
-
-		npm install --save-dev loewy-assets
-
-2. Install gulp, if you haven't already:
+1. If you're not already using gulp in your project, install it now:
 
 		npm install --save-dev gulp
 
-3. Create a `gulpfile.js` for your project. Use the sample as a reference.
+2. Install `loewy-assets`:
+
+		npm install --save-dev loewy-assets
+
+3. Create a `gulpfile.js` for your project. Use the [sample](gulpfile.sample.js) as a reference.
 
 4. Run gulp, which will automatically watch for changes to your files and run the appropriate tasks:
 

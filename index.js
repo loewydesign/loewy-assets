@@ -34,8 +34,17 @@ function relPath(base, filePath)
 }
 
 module.exports = (function() {
-	function assets(prepare, g)
+	var assets = {
+		config: {},
+		tasks: {},
+		watches: []
+	};
+
+	function init(assetsDir, publicDir, prepare, g)
 	{
+		// prepare initial configuration object
+		assets.config = require('./config')(assetsDir, publicDir);
+
 		if (typeof g !== 'undefined')
 		{
 			/**
@@ -70,70 +79,6 @@ module.exports = (function() {
 			task.call(assets);
 		}
 	}
-
-	assets.config = {
-		tmp: 'resources/assets/tmp',
-
-		css: {
-			src: 'resources/assets/css/*.css',
-			dest: 'public/css',
-			deploy: 'public/css/*.css',
-			autoprefixer: {
-				browsers: ['> 1%', 'last 2 version', 'ie 8', 'ie 9', 'Opera 12.1']
-			}
-		},
-
-		js: {
-			modules: {
-				vendor: 'resources/assets/js/vendor/**/*.js',
-				main: 'resources/assets/js/main.js'
-			},
-			dest: 'public/js',
-			deploy: 'public/js/*.js'
-		},
-
-		images: {
-			src: 'resources/assets/images/**/*',
-			dest: 'public/images'
-		},
-
-		fonts: {
-			src: 'resources/assets/fonts/**/*',
-			dest: 'public/fonts'
-		},
-
-		sprites: {
-			src: 'resources/assets/sprites/**/*.png',
-			dest: 'public/spritesheets',
-
-			sheet: 'sprites.png',
-
-			sheetPath: '../spritesheets/sprites.png',
-			partial: '_sprites.scss',
-			partialDir: 'resources/assets/scss/partials',
-
-			prefix: 'sprite_',
-			algorithm: 'binary-tree',
-			padding: 2
-		},
-
-		svgSprites: {
-			src: 'resources/assets/svg-sprites/**/*.svg',
-			dest: 'public/svg-spritesheets',
-			
-			sheet: 'sprites.svg',
-
-			partialDir: 'resources/assets/scss/partials',
-			partialTemplate: '_svg-sprites-template.scss',
-			partial: '_svg-sprites.scss',
-
-			separator: '_',
-			padding: 2,
-		}
-	};
-
-	assets.tasks = {};
-	assets.watches = [];
 
 	assets.tasks.css = function() {
 		var config = this.config;
@@ -211,13 +156,24 @@ module.exports = (function() {
 				dest += '.js';
 			}
 
-			if (Object.prototype.toString.call(src) === '[object Array]')
+			var srcType = Object.prototype.toString.call(src);
+
+			if (srcType === '[object Array]')
 			{
 				srcs = srcs.concat(src);
 			}
-			else
+			else if (srcType === '[object String]')
 			{
 				srcs.push(src);
+			}
+			else if (src === null)
+			{
+				// if the source is null, this module is disabled
+				continue;
+			}
+			else
+			{
+				console.warn('JavaScript module "' + module + '" references invalid source:', src);
 			}
 
 			taskFuncs.push(getJsTaskFunc(src, dest));
@@ -498,7 +454,7 @@ module.exports = (function() {
 		gulp.task('default', ['watch']);
 	};
 
-	return assets;
+	return init;
 })();
 
 
