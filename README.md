@@ -4,7 +4,7 @@ A front-end asset pipeline driven by gulp.js.
 
 ## Overview
 
-Loewy Assets is a front-end asset pipeline driven by gulp.js that we developed in-house for all of our projects.
+Loewy Assets is a front-end asset pipeline driven by gulp.js that we developed in-house for all of our projects. Note that it is not a "build your own flow" type of asset pipeline. Instead, we've taken the zero-configuration approach of "install and done" - well, if you're using Laravel. If you're using something else, you'll need to define two options: where your development assets are, and where you want your production assets to go.
 
 We make no guarantees as to the functionality or direction of the project. Use at your own risk.
 
@@ -61,6 +61,8 @@ The `sprites` task automatically generates a fingerprinted PNG spritesheet using
 The `svg-sprites` task automatically generates a fingerprinted SVG spritesheet using [svg-sprite](https://www.npmjs.com/package/svg-sprite) through [gulp-svg-sprite](https://www.npmjs.com/package/gulp-svg-sprite).
 
 ## Tasks
+
+This is an up-to-date list of the Loewy Assets built-in tasks.
 
 - `gulp` or `gulp watch`
 
@@ -121,6 +123,7 @@ Loewy Assets assumes that you're running a directory structure like this:
 	- SVG sprites: `<assets>/svg-sprites`
 		- Sass partials: `<assets>/scss/partials`
 		- Sass partial template: [`<assets>/scss/partials/_svg-sprites-template.scss`](resources/assets/scss/partials/_svg-sprites-template.scss)
+
 - Distribution assets, where `<public>` corresponds to the public directory that you provide (the place the web server will serve the files from):
 	- CSS: `<public>/css`
 	- JS: `<public>/js`
