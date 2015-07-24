@@ -61,10 +61,21 @@ module.exports = function() {
 	}
 
 	gulp.task('js', ['clean-js'], function(done) {
+		var numLeft = taskFuncs.length;
+
 		for (var i = 0; i < taskFuncs.length; ++i)
 		{
 			var taskFunc = taskFuncs[i];
-			taskFunc();
+
+			taskFunc().on('end', function() {
+				--numLeft;
+
+				// when all of the individual tasks are done, notify gulp by running the done callback
+				if (numLeft <= 0)
+				{
+					done();
+				}
+			})
 		}
 	});
 
