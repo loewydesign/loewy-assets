@@ -44,7 +44,7 @@ module.exports = function() {
 
 		data.img
 			// move to temporary directory
-			.pipe(gulp.dest(config.tmp))
+			.pipe(gulp.dest(config.tmpDir))
 
 			// fingerprint
 			.pipe(rev())

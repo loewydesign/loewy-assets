@@ -166,6 +166,13 @@ A: Yes! The asset pipeline is platform-/framework-/language-agnostic! With that 
 
 A: That's not a question. If you're having trouble, please troubleshoot. If you're still having trouble, feel free to [open an issue on GitHub](https://github.com/loewydesign/loewy-assets/issues).
 
+## Changelog
+
+### v0.1.0
+
+- Fixed bug where the `js` task would never return because the `done()` callback was never called. (#3)
+- Fixed bug where providing an `assetsDir` or `publicDir` without a trailing slash broke the configuration. (#1)
+
 ## Credits
 
 Loewy Assets wouldn't exist without all of the wonderful tools put out there by others. These tools include:
