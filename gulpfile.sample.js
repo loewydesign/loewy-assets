@@ -11,13 +11,13 @@ var gulp = require('gulp'),
  * The assets directory contains all of the source (development) asset files.
  * Leave empty or undefined to use the default Laravel directory structure.
  */
-var assetsDir = 'wp-content/themes/example/assets/dev',
+var assetsDir = 'wp-content/themes/example/assets/dev/',
 
 	/**
 	 * The public directory contains all of the distribution (release) asset files.
 	 * Leave empty or undefined to use the default Laravel directory structure.
 	 */
-	publicDir = 'wp-content/themes/example/assets/release';
+	publicDir = 'wp-content/themes/example/assets/release/';
 
 /**
  * Set up the asset pipeline.

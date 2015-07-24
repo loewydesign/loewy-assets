@@ -1,16 +1,28 @@
 module.exports = function(assetsDir, publicDir) {
-	if (typeof assetsDir !== 'string' || !assetsDir)
+	if (typeof assetsDir !== 'string' || !assetsDir.length)
 	{
 		assetsDir = 'resources/assets/';
 	}
 
-	if (typeof publicDir !== 'string' || !publicDir)
+	if (typeof publicDir !== 'string' || !publicDir.length)
 	{
 		publicDir = 'public/';
 	}
 
+	if (assetsDir.slice(-1) !== '/')
+	{
+		assetsDir += '/';
+	}
+
+	if (publicDir.slice(-1) !== '/')
+	{
+		publicDir += '/';
+	}
+
 	return {
-		tmp: assetsDir + 'tmp',
+		assetsDir: assetsDir,
+		publicDir: publicDir,
+		tmpDir: assetsDir + 'tmp',
 
 		css: {
 			src: assetsDir + 'css/*.css',
