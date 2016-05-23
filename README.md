@@ -68,13 +68,11 @@ This is an up-to-date list of the Loewy Assets built-in tasks.
 
 	Watches all of the source files and runs the corresponding tasks when they change.
 
-- `gulp sass`
+- `gulp styles`
 
 	Compiles all of the Sass files into CSS files and places them in the CSS source directory.
 
 	See the `sass` portion of the configuration object in [config.js](config.js).
-
-- `gulp css`
 
 	Adds automatic prefixes to the source CSS files and moves them to the public directory (the source files themselves are not affected). No concatenation is performed, as that should be done by the CSS preprocessor.
 
