@@ -1,6 +1,6 @@
 {
   "name": "loewy-assets",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A front-end asset pipeline driven by gulp.js.",
   "main": "index.js",
   "scripts": {
@@ -26,21 +26,21 @@
     "gulp": "^3.8.11"
   },
   "dependencies": {
-    "gulp-autoprefixer": "^2.3.0",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.5.2",
-    "gulp-if": "^1.2.5",
+    "gulp-if": "^2.0.1",
     "gulp-minify-css": "^1.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.3",
-    "gulp-rev": "^4.0.0",
+    "gulp-rev": "^7.0.0",
     "gulp-sass": "^2.0.1",
     "gulp-svg-sprite": "^1.1.2",
     "gulp-uglify": "^1.2.0",
     "gulp-merge": "^0.1.1",
-    "gulp.spritesmith": "^3.7.0",
+    "gulp.spritesmith": "^6.2.1",
     "require-dir": "^0.3.0",
-    "through2": "^0.6.5",
-    "vinyl": "^0.4.6"
+    "through2": "^2.0.1",
+    "vinyl": "^1.1.1"
   }
 }
