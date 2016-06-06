@@ -1,6 +1,6 @@
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var merge = require('gulp-merge');
+var merge = require('merge-stream');
 
 module.exports = function() {
 	var config = this.config,
