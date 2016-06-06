@@ -7,7 +7,7 @@ module.exports = function() {
 
 	gulp.task('styles', ['clean-css'], function() {
 		
-		var scss = gulp.src(config.sass.src)
+		return gulp.src(config.sass.src)
 
 			// compile Sass to CSS
 			.pipe(sass().on('error', sass.logError))
