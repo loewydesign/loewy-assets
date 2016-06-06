@@ -4,7 +4,7 @@ module.exports = function() {
 	var config = this.config,
 		gulp = this.gulp;
 
-	gulp.task('fingerprint-js', function() {
+	gulp.task('fingerprint-js', ['minify-js'], function() {
 		return gulp.src(config.js.deploy)
 
 			// fingerprint the deployed JS files
