@@ -1,10 +1,17 @@
 var minifyCss = require('gulp-minify-css');
 
-module.exports = function() {
+function task()
+{
 	var config = this.config,
 		gulp = this.gulp;
 
-	gulp.task('minify-css', function() {
+	// register the gulp task function
+	gulp.task('minify-css', task.create(gulp, config));
+}
+
+task.create = function(gulp, config) {
+	// return the actual gulp task function
+	return function() {
 		return gulp.src(config.css.deploy)
 
 			// minify the deployed CSS files
@@ -12,5 +19,7 @@ module.exports = function() {
 
 			// move minified files to dest
 			.pipe(gulp.dest(config.css.dest));
-	});
-};
+	}
+}
+
+module.exports = task;
