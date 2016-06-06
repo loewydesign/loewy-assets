@@ -1,5 +1,13 @@
-module.exports = function() {
-	var	gulp = this.gulp;
+var minifyCss = require('./minifyCss');
+var fingerprintCss = require('./fingerprintCss');
 
-	gulp.task('deploy-css', ['minify-css', 'fingerprint-css']);
+module.exports = function() {
+	var	config = this.config,
+		gulp = this.gulp;
+
+	gulp.task('deploy-css', function(done) {
+		minifyCss.create(gulp, config)().on('end', function() {
+			fingerprintCss.create(gulp, config)().on('end', done);
+		});
+	});
 };

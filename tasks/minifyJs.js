@@ -1,10 +1,15 @@
 var uglify = require('gulp-uglify');
 
-module.exports = function() {
+function task() 
+{
 	var config = this.config,
 		gulp = this.gulp;
 
-	gulp.task('minify-js', function() {
+	gulp.task('minify-js', task.create(gulp, config));	
+}
+
+task.create = function(gulp, config) {
+	return function() {
 		return gulp.src(config.js.deploy)
 
 			// minify the deployed JS files
@@ -12,5 +17,7 @@ module.exports = function() {
 
 			// pipe minified js to dest
 			.pipe(gulp.dest(config.js.dest));
-	});
-};
+	}
+}
+
+module.exports = task;
