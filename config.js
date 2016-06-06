@@ -29,7 +29,7 @@ module.exports = function(assetsDir, publicDir) {
 			dest: publicDir + 'css',
 			deploy: publicDir + 'css/*.css',
 			autoprefixer: {
-				browsers: ['> 1%', 'last 2 version', 'ie 8', 'ie 9', 'Opera 12.1']
+				browsers: ['> 1%', 'last 2 version']
 			}
 		},
 
