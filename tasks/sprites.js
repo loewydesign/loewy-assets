@@ -2,7 +2,8 @@ var spritesmith = require('gulp.spritesmith'),
 	rev = require('gulp-rev'),
 	replace = require('gulp-replace'),
 	through = require('through2'),
-	path = require('path');
+	path = require('path'),
+	buffer = require('gulp-buffer');
 
 function relPath(base, filePath)
 {
@@ -45,6 +46,9 @@ module.exports = function() {
 		data.img
 			// move to temporary directory
 			.pipe(gulp.dest(config.tmpDir))
+			
+			// prevent streaming not supported error
+			.pipe(buffer())
 
 			// fingerprint
 			.pipe(rev())
