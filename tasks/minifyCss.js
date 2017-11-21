@@ -1,4 +1,4 @@
-var minifyCss = require('gulp-minify-css');
+var minifyCss = require('gulp-clean-css');
 
 function task()
 {
