@@ -1,6 +1,6 @@
 {
   "name": "loewy-assets",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A front-end asset pipeline driven by gulp.js.",
   "main": "index.js",
   "scripts": {
@@ -36,6 +36,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-rev": "^8.1.0",
     "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
     "gulp-svg-sprite": "^1.3.7",
     "gulp-uglify": "^3.0.0",
     "gulp.spritesmith": "^6.7.0",
