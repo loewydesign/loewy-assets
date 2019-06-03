@@ -20,16 +20,11 @@ module.exports = function(assetsDir, publicDir) {
 	}
 
 	return {
-		env: process.env.NODE_ENV ? process.env.NODE_ENV.trim() : 'production',
 		assetsDir: assetsDir,
 		publicDir: publicDir,
 		tmpDir: assetsDir + 'tmp',
 
 		css: {
-			sourcemaps: {
-				enabled: false,
-				file: './sourcemaps'
-			},
 			src: assetsDir + 'css/*.css',
 			dest: publicDir + 'css',
 			deploy: publicDir + 'css/*.css',
@@ -44,10 +39,6 @@ module.exports = function(assetsDir, publicDir) {
 		},
 
 		js: {
-			sourcemaps: {
-				enabled: false,
-				file: './sourcemaps'
-			},
 			modules: {
 				vendor: assetsDir + 'js/vendor/**/*.js',
 				main: assetsDir + 'js/main.js'

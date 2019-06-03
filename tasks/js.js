@@ -1,5 +1,4 @@
-var concat = require('gulp-concat');
-var sourcemaps = require('gulp-sourcemaps');
+var concat = require('gulp-concat')
 
 module.exports = function() {
 	var config = this.config,
@@ -9,26 +8,13 @@ module.exports = function() {
 	function getJsTaskFunc(src, dest)
 	{
 		return function() {
-			let stream = gulp.src(src)
+			return gulp.src(src)
 
-			// sourcemap initialization if enabled
-			if (config.env != 'production' && config.js.sourcemaps && config.js.sourcemaps.enabled)
-			{
-				stream = stream.pipe(sourcemaps.init());
-			}
+				// concatenate the files together
+				.pipe(concat(dest))
 
-			// concatenate the files together
-			stream = stream.pipe(concat(dest))
-
-			// write sourcemaps if enabled
-			if (config.env != 'production' && config.js.sourcemaps && config.js.sourcemaps.enabled)
-			{
-				let file = config.js.sourcemaps.file ? config.js.sourcemaps.file : null ;
-				stream = stream.pipe(sourcemaps.write(file));
-			}
-
-			// move to release directory
-			return stream.pipe(gulp.dest(config.js.dest));
+				// move to release directory
+				.pipe(gulp.dest(config.js.dest));
 		};
 	}
 
@@ -76,12 +62,6 @@ module.exports = function() {
 
 	gulp.task('js', ['clean-js'], function(done) {
 		var numLeft = taskFuncs.length;
-
-		// sourcemap initialization if enabled
-		if (config.env == 'production' && config.js.sourcemaps && config.js.sourcemaps.enabled)
-		{
-			console.warn('WARNING: Sourcemaps will not be generated while NODE_ENV is not set, or is set to `production`. On Windows, please run `SET NODE_ENV=development` in the console, and try again.');
-		}
 
 		for (var i = 0; i < taskFuncs.length; ++i)
 		{

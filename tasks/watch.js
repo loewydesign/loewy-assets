@@ -1,12 +1,8 @@
 module.exports = function() {
-	var config = this.config,
-		watches = this.watches,
+	var watches = this.watches,
 		gulp = this.gulp;
 
 	gulp.task('watch', function () {
-		// assumes that watch command is only run in development environments
-		config.env = 'development'; 
-
 		for (var i = 0; i < watches.length; ++i)
 		{
 			var watch = watches[i],

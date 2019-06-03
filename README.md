@@ -40,7 +40,7 @@ The `sass` task automatically compiles all of your Sass files into CSS with [lib
 
 ### CSS prefixes
 
-The `styles` task automatically takes care of CSS prefixes with [autoprefixer](https://www.npmjs.com/package/autoprefixer) through [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer).
+The `css` task automatically takes care of CSS prefixes with [autoprefixer](https://www.npmjs.com/package/autoprefixer) through [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer).
 
 ### Fingerprinted assets
 
@@ -51,16 +51,6 @@ The `deploy-css` and `deploy-js` tasks automatically fingerprint your CSS and JS
 The `js` task automatically concatenates JS assets into user-defined modules with [gulp-concat](https://www.npmjs.com/package/gulp-concat).
 
 You can either concatenate everything into a single output file (module), or separate your logic into multiple files (modules).
-
-### Sourcemaps Generation
-
-The `styles` and `js` task can generate sourcemaps for you using [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps). 
-
-See the `css` and `js` portions of the configuration object in config.js.  We highly recommend using [deep-extend](https://www.npmjs.com/package/deep-extend) to extend the configuration variable within your gulpfile.js.
-
-Sourcemaps will not be generated while NODE_ENV is not set, or is set to `production`. On Windows, please run `SET NODE_ENV=development` in the console, and try again.
-
-The `watch` command will automatically set the `config.env` variable to `development`, as it is assumed you are not in production mode.
 
 ### Rasterized spritesheets
 
@@ -176,20 +166,6 @@ A: That's not a question. If you're having trouble, please troubleshoot. If you'
 
 ## Changelog
 
-### v2.1.0
-
-- Added support for sourcemaps in CSS and JS configuration
-- Added `env` (environment) variable to `config` object
-
-### v2.0.0
-
-- Updated gulp dependencies
-
-### v1.0.0
-
-- Convert use of `gulp-minify-css` to `gulp-clean-css`
-- Updated gulp dependencies
-
 ### v0.1.0
 
 - Fixed bug where the `js` task would never return because the `done()` callback was never called. (#3)
@@ -208,7 +184,6 @@ Loewy Assets wouldn't exist without all of the wonderful tools put out there by 
 - gulp-replace
 - gulp-rev
 - gulp-sass
-- gulp-sourcemaps
 - gulp-svg-sprite
 - gulp-uglify
 - gulp.spritesmith
@@ -218,4 +193,4 @@ Loewy Assets wouldn't exist without all of the wonderful tools put out there by 
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) &copy; 2018 Hedgehog Development LLC.
+[MIT](http://opensource.org/licenses/MIT) &copy; 2015 Loewy Design, Inc.
