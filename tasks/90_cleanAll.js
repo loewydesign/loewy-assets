@@ -3,6 +3,6 @@ module.exports = function() {
 	
 	gulp.task(
 		'clean-all',
-		gulp.parallel('clean-css', 'clean-images', 'clean-fonts', 'clean-sprites', 'clean-svg-sprites')
+		gulp.parallel('clean-css', 'clean-js', 'clean-images', 'clean-fonts', 'clean-sprites', 'clean-svg-sprites')
 	);
 };	
