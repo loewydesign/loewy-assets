@@ -23,25 +23,24 @@
   },
   "homepage": "https://github.com/loewydesign/loewy-assets",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^4.0.2"
   },
   "dependencies": {
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-buffer": "^0.0.2",
+    "gulp-autoprefixer": "^6.1.0",
     "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^3.9.0",
-    "gulp-concat": "^2.5.2",
-    "gulp-if": "^2.0.1",
-    "gulp-rename": "^1.2.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
     "gulp-replace": "^1.0.0",
-    "gulp-rev": "^8.1.0",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-svg-sprite": "^1.3.7",
-    "gulp-uglify": "^3.0.0",
-    "gulp.spritesmith": "^6.7.0",
-    "require-dir": "^1.0.0",
-    "through2": "^2.0.3",
-    "vinyl": "^2.1.0"
+    "gulp-rev": "^9.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-svg-sprite": "^1.5.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp.spritesmith": "^6.10.0",
+    "path": "^0.12.7",
+    "require-dir": "^1.2.0",
+    "through2": "^3.0.1",
+    "vinyl-buffer": "^1.0.1"
   }
 }

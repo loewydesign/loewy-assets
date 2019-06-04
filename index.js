@@ -26,21 +26,21 @@ module.exports = function(assetsDir, publicDir, prepare, g) {
 	{
 		assets.gulp = require('gulp');
 	}
-
+	
 	if (typeof prepare === 'function')
 	{
 		prepare.call(assets);
 	}
 
 	var tasks = assets.tasks;
-
+	
 	for (var field in tasks)
 	{
 		if (!tasks.hasOwnProperty(field))
 		{
 			continue;
 		}
-
+		
 		var task = tasks[field];
 
 		if (typeof task === 'function')
