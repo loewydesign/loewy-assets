@@ -18,7 +18,7 @@ module.exports = function() {
 				task = [task];
 			}
 
-			gulp.watch(watch.watch, task);
+			gulp.watch(watch.watch, gulp.series(...task));
 		}
 	});
 };

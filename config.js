@@ -32,10 +32,7 @@ module.exports = function(assetsDir, publicDir) {
 			},
 			src: assetsDir + 'css/*.css',
 			dest: publicDir + 'css',
-			deploy: publicDir + 'css/*.css',
-			autoprefixer: {
-				browsers: ['> 1%', 'last 2 version']
-			}
+			deploy: publicDir + 'css/*.css'
 		},
 
 		sass: {
