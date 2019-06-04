@@ -1,11 +1,19 @@
+// requires
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 
 module.exports = function() {
 	var config = this.config,
-		modules = config.js.modules,
-		gulp = this.gulp;
+		gulp = this.gulp,
+		modules = config.js.modules || {},
+		taskFuncs = [],
+		srcs = []
+		;
 
+	var taskFuncs = [],
+		moduleFuncs = {},
+		srcs = [];
+		
 	function getJsTaskFunc(src, dest)
 	{
 		return function() {
@@ -32,9 +40,6 @@ module.exports = function() {
 		};
 	}
 
-	var taskFuncs = [],
-		srcs = [];
-
 	for (var module in modules)
 	{
 		if (!modules.hasOwnProperty(module))
@@ -43,7 +48,8 @@ module.exports = function() {
 		}
 
 		var src = modules[module],
-			dest = module;
+			dest = module,
+			funcName = 'compile-js-module-' + module;
 
 		if (!dest.match(/\.js$/i))
 		{
@@ -70,34 +76,28 @@ module.exports = function() {
 		{
 			console.warn('JavaScript module "' + module + '" references invalid source:', src);
 		}
-
-		taskFuncs.push(getJsTaskFunc(src, dest));
+		
+		gulp.task(funcName, getJsTaskFunc(src, dest));
+		taskFuncs.push(funcName);
 	}
-
-	gulp.task('js', ['clean-js'], function(done) {
-		var numLeft = taskFuncs.length;
-
-		// sourcemap initialization if enabled
-		if (config.env == 'production' && config.js.sourcemaps && config.js.sourcemaps.enabled)
-		{
-			console.warn('WARNING: Sourcemaps will not be generated while NODE_ENV is not set, or is set to `production`. On Windows, please run `SET NODE_ENV=development` in the console, and try again.');
+	
+	gulp.task(
+		'compile-js', 
+		function(done) {
+			// sourcemap initialization if enabled
+			if (config.env == 'production' && config.js.sourcemaps && config.js.sourcemaps.enabled)
+			{
+				console.warn('WARNING: Sourcemaps will not be generated while NODE_ENV is not set, or is set to `production`. On Windows, please run `SET NODE_ENV=development` in the console, and try again.');
+			}
+			
+			return gulp.parallel(...taskFuncs)(done);
 		}
-
-		for (var i = 0; i < taskFuncs.length; ++i)
-		{
-			var taskFunc = taskFuncs[i];
-
-			taskFunc().on('end', function() {
-				--numLeft;
-
-				// when all of the individual tasks are done, notify gulp by running the done callback
-				if (numLeft <= 0)
-				{
-					done();
-				}
-			})
-		}
-	});
+	);
+	
+	gulp.task(
+		'js',
+		gulp.series('clean-js', 'compile-js')
+	);
 
 	this.watches.push({
 		watch: srcs,
