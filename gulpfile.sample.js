@@ -1,28 +1,30 @@
-var gulp = require('gulp'),
-
-	/**
-	 * Use of deep-extend is not required, but very helpful. See below.
-	 */
-	deepExtend = require('deep-extend'),
-
-	assets = require('loewy-assets');
+'use strict';
 
 /**
  * The assets directory contains all of the source (development) asset files.
  * Leave empty or undefined to use the default Laravel directory structure.
  */
-var assetsDir = 'wp-content/themes/example/assets/dev/',
-
-	/**
-	 * The public directory contains all of the distribution (release) asset files.
-	 * Leave empty or undefined to use the default Laravel directory structure.
-	 */
-	publicDir = 'wp-content/themes/example/assets/release/';
+const assetsDir = '';
 
 /**
- * Set up the asset pipeline.
+ * The public directory contains all of the distribution (release) asset files.
+ * Leave empty or undefined to use the default Laravel directory structure.
  */
-assets(assetsDir, publicDir, function() {
+const publicDir = '';
+
+
+const gulp = require('gulp');
+const assets = require('loewy-assets');
+
+/**
+ * Use of deep-extend is not required, but very helpful. See below.
+ */
+const deepExtend = require('deep-extend');
+
+/**
+ * Assets setup callback function
+ */
+function init () {
 	/**
 	 * Use deep-extend to extend the configuration object.
 	 */
@@ -50,4 +52,9 @@ assets(assetsDir, publicDir, function() {
 	 *
 	 * See the index.js file for advanced usage details.
 	 */
-}, gulp);
+}
+
+/**
+ * Set up the asset pipeline.
+ */
+assets(assetsDir, publicDir, init, gulp);

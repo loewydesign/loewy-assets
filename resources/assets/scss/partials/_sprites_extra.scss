@@ -1,0 +1,51 @@
+@mixin sprite-width-scale($sprite, $scale:1) {
+	width: nth($sprite, 5) * $scale;
+}
+
+@mixin sprite-height-scale($sprite, $scale:1) {
+	height: nth($sprite, 6) * $scale;
+}
+
+@mixin sprite-position-scale($sprite, $scale:1) {
+	$sprite-offset-x: nth($sprite, 1);
+	$sprite-offset-y: nth($sprite, 2);
+	
+	$x: 0%;
+	$y: 0%;
+	@if $sprite-offset-x > 0 {
+		$x: (($sprite-offset-x) / ($spritesheet-width - nth($sprite, 5))) * 100%;
+	}
+	
+	@if $sprite-offset-y > 0 {
+		$y: (($sprite-offset-y) / ($spritesheet-height - nth($sprite, 6))) * 100%;
+	}
+
+	//background-position: $sprite-offset-x  $sprite-offset-y;
+	background-position: $x $y;
+}
+
+@mixin sprite-image-scale($sprite, $scale:1) {
+	$sprite-image: nth($sprite, 9);
+	$w: ceil(nth($sprite, 5) * $scale);
+	$h: ceil(nth($sprite, 6) * $scale);
+	background-image: url(#{$sprite-image});
+	background-size: (ceil(stripUnits($spritesheet-width * $scale)) * 1px) (ceil(stripUnits($spritesheet-height * $scale)) * 1px);
+	background-repeat: no-repeat;
+}
+
+@mixin sprite-scale($sprite, $scale:1) {
+	@include sprite-image-scale($sprite, $scale);
+	@include sprite-position-scale($sprite, $scale);
+	@include sprite-width-scale($sprite, $scale);
+	@include sprite-height-scale($sprite, $scale);
+}
+
+@mixin sprite-scale-by-width($sprite, $width) {
+	$scale: 1;
+	
+	@if $width {
+		$scale: $width / nth($sprite, 5);
+	}
+	
+	@include sprite-scale($sprite, $scale);
+}
