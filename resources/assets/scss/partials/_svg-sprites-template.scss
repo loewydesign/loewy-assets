@@ -4,30 +4,101 @@ $spriteSvgPath: '../svg-spritesheets/{{{sprite}}}' '../svg-spritesheets/{{{sprit
 $spriteSvgWidth: {{{spriteWidth}}};
 $spriteSvgHeight: {{{spriteHeight}}};
 
-@mixin sprite-svg($sprite, $centerX: false, $centerY: false, $scale: 1) {
-	$x: round(nth($sprite, 1) * $scale);
-	$y: round(nth($sprite, 2) * $scale);
-	$w: ceil(nth($sprite, 3) * $scale);
-	$h: ceil(nth($sprite, 4) * $scale);
-
+// svgSprite placeholder is shared to avoid duplication of spritesheet file name
+%svgSprite {
 	$svgPath: nth($spriteSvgPath, 1);
 	$pngPath: nth($spriteSvgPath, 2);
 
-	width: $w * $scale * 1px;
-	height: $h * $scale * 1px;
-
-	background-position: ($x * 1px) ($y * 1px);
 	background-image: url(#{$svgPath});
-	background-size: ($spriteSvgWidth * $scale * 1px) ($spriteSvgHeight * $scale * 1px);
 
 	.no-svg & {
 		background-image: url(#{$pngPath});
 	}
-
-	@include sprite-svg-center($sprite, $centerX, $centerY, $scale);
 }
 
-@mixin sprite-svg-center($sprite, $centerX: false, $centerY: false, $scale: 1) {
+/**
+ * Get sprite width
+ */
+@function svg-sprite-width($sprite, $scale: 1) {
+	$w: ceil(nth($sprite, 3) * $scale);
+	@return $w * 1px;
+}
+
+/**
+ * Get sprite height
+ */
+@function svg-sprite-height($sprite, $scale: 1) {
+	$h: ceil(nth($sprite, 4) * $scale);
+	@return $h * 1px;
+}
+
+/**
+ * Compute the scale of a sprite from a given width
+ */
+@function svg-sprite-get-scale($sprite, $desiredWidth: null) {
+	@if ($desiredWidth == null)
+	{
+		@return 1;
+	}
+
+	@return ($desiredWidth / svg-sprite-width($sprite));
+}
+
+/**
+ * Raw SVG sprite mixin. Turns an element into an SVG sprite.
+ */
+@mixin svg-sprite($sprite, $centerX: false, $centerY: false, $scale: 1) {
+	@extend %svgSprite;
+
+	// pixel-based positioning
+	//$x: round(nth($sprite, 1) * $scale);
+	//$y: round(nth($sprite, 2) * $scale);
+	//background-position: ($x * 1px) ($y * 1px);
+
+	// percentage-based positioning
+	$px: nth($sprite, 5);
+	$py: nth($sprite, 6);
+	background-position: ($px * 1%) ($py * 1%);
+
+	// this will set the width, height, and background size
+	@include svg-sprite-scale($sprite, $scale);
+
+	@if ($centerX or $centerY) {
+		@include svg-sprite-center($sprite, $centerX, $centerY, $scale);
+	}
+}
+
+
+/**
+ * Renders SVG sprite scaled by width.
+ */
+@mixin svg-sprite-scale-width($sprite, $centerX: false, $centerY: false, $width) {
+	$scale: 1;
+	
+	@if $width {
+		$scale: svg-sprite-get-scale($sprite, $width);
+	}
+	
+	@include svg-sprite($sprite, $centerX, $centerY, $scale);
+}
+
+/**
+ * Renders SVG sprite
+ */
+@mixin svg-sprite-scale($sprite, $scale: 1) {
+	$w: ceil(nth($sprite, 3) * $scale);
+	$h: ceil(nth($sprite, 4) * $scale);
+
+	width: $w * 1px;
+	height: $h * 1px;
+
+	background-size: (ceil($spriteSvgWidth * $scale) * 1px) (ceil($spriteSvgHeight * $scale) * 1px);
+}
+
+/**
+ * Renders centered SVG sprite
+ */
+@mixin svg-sprite-center($sprite, $centerX: false, $centerY: false, $scale: 1) {
 	$w: nth($sprite, 3) * $scale;
 	$h: nth($sprite, 4) * $scale;
 

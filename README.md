@@ -1,3 +1,5 @@
+**Fork from https://github.com/loewydesign/loewy-assets**
+
 # Loewy Assets
 
 A front-end asset pipeline driven by gulp.js.
@@ -103,18 +105,60 @@ This is an up-to-date list of the Loewy Assets built-in tasks.
 	Automatically generates a fingerprinted SVG spritesheet.
 
 	Note that this task relies on a Sass partial template. A working example is provided [here](resources/assets/scss/partials/_svg-sprites-template.scss). While we continue to improve our documentation, please read up on `svg-sprite`'s templates [here](https://github.com/jkphl/svg-sprite/blob/c6f5748d20922037ea8c8da20fd205472f84b4dc/docs/configuration.md#user-content-rendering-configurations).
+	
+- `gulp images`
 
-- `gulp clean-[css/js/sprites/svg-sprites/all]`
+	Copy files from source directory to public directory.
+	
+- `gulp fonts`
+
+	Copy files from source directory to public directory.
+
+- `gulp clean-[css/js/sprites/svg-sprites/images/fonts/all]`
 
 	Cleans corresponding public directory. These commands are automatically run where appropriate, but could be triggered manually to clean up.
+	
+- `gulp minify-css`
+
+	Minify CSS files in public directory.
+	
+- `gulp minify-js`
+
+	Minify CSS files in public directory.
+	
+- `gulp minify-all`
+
+	Runs `minify-css` and `minify-js` tasks.
+	
+- `gulp fingerprint-css`
+
+	Fingerprints the CSS files in the public directory and saves a `rev-manifest.json` file with mappings from the original filenames to the fingerprinted filenames.
+	
+- `gulp fingerprint-js`
+
+	Fingerprints the JS files in the public directory and saves a `rev-manifest.json` file with mappings from the original filenames to the fingerprinted filenames.
 
 - `gulp deploy-css`
 
-	Fingerprints the CSS files in the public directory and saves a `rev-manifest.json` file with mappings from the original filenames to the fingerprinted filenames.
+	Runs `minify-css` and `fingerprint-css` tasks.
 
 - `gulp deploy-js`
 
-	Fingerprints the JS files in the public directory and saves a `rev-manifest.json` file with mappings from the original filenames to the fingerprinted filenames.
+	Runs `minify-js` and `fingerprint-js` tasks.
+	
+- `gulp compile-all`
+
+	Compiles all assets (Sass, JS, images, fonts, sprites, SVG sprites).
+	
+- `gulp build`
+
+	Runs `clean-all`, `compile-all`, and `minify-all` tasks.
+	
+- `gulp deploy`
+
+	Runs `build`, `fingerprint-css`, `fingerprint-js` tasks.
+	
+
 
 ## Directory structure
 
@@ -176,6 +220,23 @@ A: That's not a question. If you're having trouble, please troubleshoot. If you'
 
 ## Changelog
 
+### v3.0.2
+- Documentation update
+- Updated `gulpfile.js` sample files
+- Added `.browserslistrc` sample file
+- Added `_sprites_extra.scss` to resource folder
+
+### v3.0.1
+- Fixed some tasks issues
+
+- Updated all dependencies
+- Now using Gulp 4
+
+### v3.0.0
+
+- Updated all dependencies
+- Now using Gulp 4
+
 ### v2.1.0
 
 - Added support for sourcemaps in CSS and JS configuration
@@ -201,10 +262,9 @@ Loewy Assets wouldn't exist without all of the wonderful tools put out there by 
 
 - gulp-autoprefixer
 - gulp-clean
+- gulp-clean-css
 - gulp-concat
 - gulp-if
-- gulp-minify-css
-- gulp-rename
 - gulp-replace
 - gulp-rev
 - gulp-sass
@@ -212,10 +272,11 @@ Loewy Assets wouldn't exist without all of the wonderful tools put out there by 
 - gulp-svg-sprite
 - gulp-uglify
 - gulp.spritesmith
+- path
 - require-dir
 - through2
-- vinyl
+- vinyl-buffer
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) &copy; 2018 Hedgehog Development LLC.
+[MIT](http://opensource.org/licenses/MIT) &copy; 2019 Hedgehog Development LLC.
