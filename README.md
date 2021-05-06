@@ -1,3 +1,5 @@
+**Fork from https://github.com/loewydesign/loewy-assets**
+
 # Loewy Assets
 
 A front-end asset pipeline driven by gulp.js.
