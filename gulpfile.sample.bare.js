@@ -1,12 +1,17 @@
-var gulp = require('gulp'),
-	deepExtend = require('deep-extend'),
-	assets = require('loewy-assets');
+'use strict';
 
-var assetsDir = '',
-	publicDir = '';
+// source directory
+const assetsDir = '';
 
-assets(assetsDir, publicDir, function() {
-	deepExtend(this.config, {
-		// ...
-	});
-}, gulp);
+// release/public directory
+const publicDir = '';
+
+const gulp = require('gulp');
+const assets = require('loewy-assets');
+
+// assets prepare callback
+function init () {
+}
+
+// initialize
+assets(assetsDir, publicDir, init, gulp);
