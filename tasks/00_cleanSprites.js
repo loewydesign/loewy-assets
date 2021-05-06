@@ -1,5 +1,5 @@
 // requires
-const clean = require('gulp-clean');
+const del = require('del');
 
 module.exports = function() {
 	var config = this.config,
@@ -7,7 +7,6 @@ module.exports = function() {
 	;
 
 	gulp.task('clean-sprites', function() {
-		return gulp.src(config.sprites.dest + '/*', { read: false })
-			.pipe(clean());
+		return del(config.sprites.dest + '/*');
 	});
 };
