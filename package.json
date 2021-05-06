@@ -1,6 +1,6 @@
 {
   "name": "loewy-assets",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "A front-end asset pipeline driven by gulp.js.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/loewydesign/loewy-assets.git"
+    "url": "https://github.com/sukiman/loewy-assets.git"
   },
   "keywords": [
     "front-end",
@@ -21,26 +21,26 @@
   "bugs": {
     "url": "https://github.com/loewydesign/loewy-assets/issues"
   },
-  "homepage": "https://github.com/loewydesign/loewy-assets",
-  "devDependencies": {
-    "gulp": "^4.0.2"
-  },
+  "homepage": "https://github.com/sukiman/loewy-assets",
   "dependencies": {
-    "gulp-autoprefixer": "^6.1.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^4.2.0",
+    "del": "^6.0.0",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
-    "gulp-if": "^2.0.2",
-    "gulp-replace": "^1.0.0",
+    "gulp-if": "^3.0.0",
+    "gulp-replace": "^1.1.2",
     "gulp-rev": "^9.0.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-svg-sprite": "^1.5.0",
     "gulp-uglify": "^3.0.2",
-    "gulp.spritesmith": "^6.10.0",
+    "gulp.spritesmith": "^6.11.0",
     "path": "^0.12.7",
     "require-dir": "^1.2.0",
-    "through2": "^3.0.1",
+    "through2": "^2.0.5",
     "vinyl-buffer": "^1.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
   }
 }
